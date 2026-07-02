@@ -1,54 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-
-const institutes = [
-  {
-    id: "business",
-    title: "Institute of Business and Financial Services",
-    description: "Developing future business leaders and financial professionals with strong foundations in management, marketing, and finance.",
-    logo: "/institutes/ibfs.png",
-    bgLight: "bg-emerald-50",
-  },
-  {
-    id: "arts-sciences",
-    title: "Institute of Arts and Sciences",
-    description: "Fostering critical thinking, effective communication, and a deep understanding of society through the humanities and social sciences.",
-    logo: "/institutes/ias.png",
-    bgLight: "bg-purple-50",
-  },
-  {
-    id: "computer-studies",
-    title: "Institute of Computer Studies",
-    description: "Building expertise in computing and information technology to meet the demands of the digital age.",
-    logo: "/institutes/ics.png",
-    bgLight: "bg-red-50",
-  },
-  {
-    id: "teacher-education",
-    title: "Institute of Teacher Education",
-    description: "Preparing dedicated and competent educators who shape the minds of future generations.",
-    logo: "/institutes/ite.png",
-    bgLight: "bg-blue-50",
-  },
-  {
-    id: "criminal-justice",
-    title: "Institute of Criminal Justice Education",
-    description: "Developing ethical and skilled professionals in criminology and security management for a safer society.",
-    logo: "/institutes/icje.png",
-    bgLight: "bg-red-50",
-  },
-  {
-    id: "health-sciences",
-    title: "Institute of Health Sciences",
-    description: "Training compassionate healthcare professionals dedicated to maternal and child health and community well-being.",
-    logo: "/institutes/ihs.png",
-    bgLight: "bg-pink-50",
-  },
-];
+import InstituteModal from "@/components/academics/InstituteModal";
+import { institutes, type InstituteData } from "@/lib/institutes-data";
 
 export default function AcademicInstitutesSection() {
+  const [selectedInstitute, setSelectedInstitute] = useState<InstituteData | null>(null);
+
   return (
     <section id="academic-institutes" className="relative py-20 md:py-28 bg-light-gray overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/3 rounded-full blur-3xl pointer-events-none" />
@@ -98,12 +58,17 @@ export default function AcademicInstitutesSection() {
                   {inst.title}
                 </h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  {inst.description}
+                  {inst.shortDesc}
                 </p>
                 <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
-                  <span className="text-xs font-subheading font-semibold uppercase tracking-wider text-primary">
+                  <motion.button
+                    onClick={() => setSelectedInstitute(inst)}
+                    className="text-xs font-subheading font-semibold uppercase tracking-wider text-primary"
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
+                  >
                     Explore Program
-                  </span>
+                  </motion.button>
                   <ArrowRight className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
                 </div>
               </motion.div>
@@ -111,6 +76,11 @@ export default function AcademicInstitutesSection() {
           })}
         </div>
       </div>
+
+      <InstituteModal
+        institute={selectedInstitute}
+        onClose={() => setSelectedInstitute(null)}
+      />
     </section>
   );
 }

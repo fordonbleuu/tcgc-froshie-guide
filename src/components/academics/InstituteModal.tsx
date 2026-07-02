@@ -134,6 +134,30 @@ export default function InstituteModal({ institute, onClose }: InstituteModalPro
                       <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                         {institute.overview}
                       </p>
+                      {institute.socialLinks.length > 0 && (
+                        <div className="mt-6 pt-6 border-t border-gray-100">
+                          <p className="text-sm text-gray-500 font-subheading font-medium mb-3">
+                            Connect with us:
+                          </p>
+                          <div className="flex flex-wrap gap-3">
+                            {institute.socialLinks.map((link) => {
+                              const LinkIcon = link.icon;
+                              return (
+                                <a
+                                  key={link.platform}
+                                  href={link.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-2 px-4 py-2 bg-light-gray rounded-xl hover:bg-gray-200 transition-colors text-sm font-subheading font-medium text-gray-700 hover:text-primary"
+                                >
+                                  <LinkIcon className="w-4 h-4" />
+                                  {link.platform}
+                                </a>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   )}
 

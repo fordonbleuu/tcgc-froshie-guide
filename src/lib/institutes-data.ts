@@ -5,8 +5,15 @@ import {
   Heart,
   GraduationCap,
   Shield,
+  ExternalLink,
   type LucideIcon,
 } from "lucide-react";
+
+export interface SocialLink {
+  platform: string;
+  url: string;
+  icon: LucideIcon;
+}
 
 export interface InstituteData {
   id: string;
@@ -20,6 +27,7 @@ export interface InstituteData {
   overview: string;
   programs: string[];
   careers: string[];
+  socialLinks: SocialLink[];
 }
 
 export const institutes: InstituteData[] = [
@@ -49,6 +57,10 @@ export const institutes: InstituteData[] = [
       "Business Consultant",
       "Entrepreneur",
     ],
+    socialLinks: [
+      { platform: "Facebook (Page)", url: "https://facebook.com/gadtcibfs", icon: ExternalLink },
+      { platform: "Facebook (Knights)", url: "https://facebook.com/ibfsknights", icon: ExternalLink },
+    ],
   },
   {
     id: "arts-sciences",
@@ -75,6 +87,10 @@ export const institutes: InstituteData[] = [
       "Public Relations Officer",
       "Legislative Aide",
     ],
+    socialLinks: [
+      { platform: "Facebook", url: "https://facebook.com/profile.php?id=61573501230907", icon: ExternalLink },
+      { platform: "Facebook (ISC)", url: "https://facebook.com/IASInstituteStudentCouncil", icon: ExternalLink },
+    ],
   },
   {
     id: "computer-studies",
@@ -97,6 +113,9 @@ export const institutes: InstituteData[] = [
       "Systems Analyst",
       "Network Administrator",
       "Database Administrator",
+    ],
+    socialLinks: [
+      { platform: "Facebook", url: "https://facebook.com/profile.php?id=61562380613444", icon: ExternalLink },
     ],
   },
   {
@@ -125,6 +144,10 @@ export const institutes: InstituteData[] = [
       "School Administrator",
       "Educational Consultant",
     ],
+    socialLinks: [
+      { platform: "Facebook (Mentors)", url: "https://facebook.com/TCGCMentors", icon: ExternalLink },
+      { platform: "Facebook", url: "https://facebook.com/profile.php?id=100089887841361", icon: ExternalLink },
+    ],
   },
   {
     id: "criminal-justice",
@@ -149,6 +172,10 @@ export const institutes: InstituteData[] = [
       "Forensic Investigator",
       "Corrections Officer",
     ],
+    socialLinks: [
+      { platform: "Facebook (GADTC)", url: "https://facebook.com/GADTCCriminology", icon: ExternalLink },
+      { platform: "Facebook", url: "https://facebook.com/profile.php?id=61578209774911", icon: ExternalLink },
+    ],
   },
   {
     id: "health-sciences",
@@ -171,6 +198,10 @@ export const institutes: InstituteData[] = [
       "Community Health Nurse",
       "Health Educator",
       "Hospital Administrator",
+    ],
+    socialLinks: [
+      { platform: "Facebook", url: "https://facebook.com/profile.php?id=61559982481681", icon: ExternalLink },
+      { platform: "Facebook", url: "https://facebook.com/profile.php?id=61550905762420", icon: ExternalLink },
     ],
   },
 ];
